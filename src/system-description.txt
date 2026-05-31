@@ -1,5 +1,0 @@
-# Outline the system structure (including necessary files and directories for running the code)
-In the 2nd file within code that represents my word bigram language identifier, I have 2 code cells. The bottom one shows the MLE probability;
-that is, it does language identification without any smoothing techniques. The first cell is with Laplace smoothing applied.
-My first file is a letter language identiifier and the third file "wordLangID2.ipynb" is a bigram model that uses Good-Turing smoothing techniques.
-For the Good-Turing model, I have a magic number "tinyNum = 1e-12" defined at the top. This is just used to make my log calculations clean. 
