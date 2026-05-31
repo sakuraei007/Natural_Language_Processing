@@ -1,61 +1,37 @@
-# Assignment #2
+# 自然言語処理：言語識別 (Language Identification)
 
-The purpose of this assignment is to familiarize you with n-gram language modeling and a handful of smoothing techniques.
+Nグラム言語モデルと各種スムージング手法を用いて、テキストデータの言語を高精度で識別するプログラムです。
 
-Steps to this assignment are as follows:
+## システム構成 (System Structure)
 
-* Read the Assignment2.pdf file thoroughly
-* Modify the .ipynb files in this repository with your code to fulfill the assignment requirements.
-* Use Git to add and commit your changes
-* Use Git to push your changes to GitHub
+本プロジェクトは、異なるモデリングとスムージング手法を比較・実装した3つの主要ファイルで構成されています。
 
-Do let us know on Canvas if you have questions.
+* **ファイル1: 文字言語識別モデル (Letter Language Identifier)**
+  * 文字レベル（Character-level）の頻度に基づく言語識別モデルです。
+* **ファイル2: 単語バイグラムモデル (Word Bigram - Laplace & MLE)**
+  * 単語レベルのバイグラムモデルです。内部は2つのコードセルに分かれています。
+  * **上部のセル:** 未知のバイグラムに対処するための**ラプラス・スムージング (Laplace Smoothing)** を適用。
+  * **下部のセル:** スムージングなしの**最尤推定 (MLE: Maximum Likelihood Estimation)** を実行。
+* **`wordLangID2.ipynb`: 単語バイグラムモデル (Good-Turing)**
+  * **Good-Turingスムージング**を適用した単語バイグラムモデルです。
+  * *注記:* 確率がゼロになることによる対数計算のエラーを防ぐため、コードの先頭で微小な定数（`tinyNum = 1e-12`）を定義しています。
+ 
+* ---
 
-* Note 1: Please use relative paths instead of absolute paths to locations on your machine.
-* **Note 2: Some of these models may take a while to train. If your model takes 5+ minutes to train, we recommend that you save the models (e.g. using pickle's serialization functionality) and then add/commit/push these saved models to your repository. Write in some functionalit(y|ies) to read those models in so we can run your code and validate quicker. If you have questions about how to pickle language models reach out to us on Canvas or come to office hours.**
+* # Natural Language Processing: Language Identification
 
-Project title and short description
+This project utilizes n-gram language modeling and various smoothing techniques to accurately identify the language of provided text data. 
 
-repositoru contents how they are orhganized what uis the pirpose of each file
+## System Structure
 
-project overview whats it about what does it do
+The repository is organized into three main files, each testing a different modeling or smoothing approach:
 
-**system descrioption**
-
-3 jupiter files dont rename them change them or move them
-
-create 3 language models
-
-3 data files get an inpit and oitpiut and validate whether it is correct using labels.sol (this is the gold standard)
-
-needs to be named answer.pdf download it into src cannot be written in visual studio it should be a pdf file WORD
-
-what to do
-
-most important is the report, explanation of the code
-
-,make sure to elaboraate andd answer the questions be detailed on what you did
-
-each of the model should have an output file
-
-not allowed to use any external librarires
-
-Due October 14h
-
-you need to predict the language so use it and add more steps to predict after the smoothing the language
-
-thatis after the text or document
-
-[Applying-smoothing.ipynb - Colab](https://colab.research.google.com/drive/1hJKgSiTz4Ki1-Ke9W1ybkaM36x2YlSeP#scrollTo=IZP6fSkq53od)
-
-Q1 character base letter base character model so not bigram model
-
-trying to identify all three languages
-
-answer all questions even iff you repeat
-
-Q2 word bigram word by word
-
-Q3 Implement good turing instead of add one smoothing
-
-Quiz 2 due October 7th
+* **File 1: Letter Language Identifier**
+  * Implements a character-level model to identify languages based on letter frequencies.
+* **File 2: Word Bigram Model (Laplace & MLE)**
+  * Implements a word-level bigram model. 
+  * **Top Cell:** Applies **Laplace smoothing** to account for unseen bigrams.
+  * **Bottom Cell:** Calculates the Maximum Likelihood Estimation (**MLE**) without any smoothing techniques.
+* **`wordLangID2.ipynb` (Good-Turing)**
+  * Implements a word bigram model using **Good-Turing smoothing**.
+  * *Note:* A constant (`tinyNum = 1e-12`) is defined at the top of the file to handle zero-probabilities and keep logarithmic calculations clean.
